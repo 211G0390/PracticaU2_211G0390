@@ -1,0 +1,42 @@
+﻿@model PracticaU2_211G0390.Models.ViewModels.MapaCurricularViewModel
+@{
+    Layout = "_Layout";
+}
+
+<h1>
+    <a class="btn" href="javascript: history.back()">&#x25c0; Regresar</a>@Model.Nombre
+</h1>
+
+<h2>@Model.Plan</h2>
+<h2>Total de creditos: @Model.Creditos </h2>
+<section class="reticula">
+    <table>
+        <thead>
+            <tr>
+                @for (int i=1; i<=Model.numSemestres; i++)
+                {
+                    <th>@i semestre</th>
+                }
+            </tr>
+        </thead>
+        <tr>
+             @* @for (int i = 1; i <= Model.Carrera.Materias.Max(x=>x.Semestre); i++) *@
+            @for (int i = 1; i <= Model.numSemestres; i++)
+            { 
+                <td>
+                    @foreach(var materia in Model.Materias.Where(x => x.Semestre == i))
+                    {
+                    <div class="materia">
+                        <span class="clave">@materia.Clave</span>
+                        <span class="nombre">@materia.Nombre</span>
+                        <span class="tpc">@materia.HorasPracticas-@materia.HorasTeoricas-@materia.Creditos</span>
+                    </div>
+                    
+                    }
+                </td>
+           } 
+
+        </tr>
+        
+    </table>
+</section>

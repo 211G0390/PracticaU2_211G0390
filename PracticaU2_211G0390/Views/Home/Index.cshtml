@@ -1,0 +1,20 @@
+﻿@model IEnumerable<PracticaU2_211G0390.Models.Carreras>
+@{
+	Layout = "_Layout";
+}
+
+@* Dentro de aquí se pega
+	lo que contiene de main dentro del index, sin incluir main *@
+	
+<h1>Oferta Académica</h1>
+
+
+<ol class="rectangle-list">
+
+	@foreach (var carr in Model)
+	{
+	<li><a href="~/info/@carr.Nombre!.Replace(" ", "-")">@carr.Plan @carr.Nombre</a></li>
+	
+	}
+</ol>
+
